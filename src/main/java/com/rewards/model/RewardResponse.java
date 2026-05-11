@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
+/**
+ * The type Reward response.
+ */
 @Data
 @Builder
 @NoArgsConstructor

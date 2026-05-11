@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * The type Reward controller.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rewards")
@@ -20,6 +23,11 @@ public class RewardController {
 
     private final RewardService rewardService;
 
+    /**
+     * Gets rewards.
+     *
+     * @return the rewards
+     */
     @GetMapping
     @Operation(summary = "Get rewards for all customers")
     public List<RewardResponse> getRewards() {

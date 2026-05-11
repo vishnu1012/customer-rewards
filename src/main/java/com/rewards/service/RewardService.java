@@ -9,17 +9,32 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.rewards.exception.ResourceNotFoundException;
 
+/**
+ * The type Reward service.
+ */
 @Service
 @RequiredArgsConstructor
 public class RewardService {
 
     private final TransactionRepository transactionRepository;
 
+    /**
+     * Calculate rewards list.
+     *
+     * @return the list
+     */
     public List<RewardResponse> calculateRewards() {
 
         List<Transaction> transactions =
                 transactionRepository.findAll();
+
+        if (transactions.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No transactions found"
+            );
+        }
 
         Map<Long, List<Transaction>> customerTransactions =
                 transactions.stream()

@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * The type Transaction.
+ */
 @Entity
 @Data
 @Table(name = "transactions")
