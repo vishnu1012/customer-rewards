@@ -17,6 +17,9 @@ import java.util.Map;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * The type Reward controller test.
+ */
 @WebMvcTest(RewardController.class)
 class RewardControllerTest {
 
@@ -29,6 +32,11 @@ class RewardControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Test get rewards.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void testGetRewards() throws Exception {
 

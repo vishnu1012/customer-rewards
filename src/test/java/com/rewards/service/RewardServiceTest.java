@@ -16,6 +16,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Reward service test.
+ */
 class RewardServiceTest {
 
     @Mock
@@ -24,11 +27,17 @@ class RewardServiceTest {
     @InjectMocks
     private RewardService rewardService;
 
+    /**
+     * Sets .
+     */
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test calculate rewards.
+     */
     @Test
     void testCalculateRewards() {
 
@@ -68,6 +77,9 @@ class RewardServiceTest {
                 rewardResponse.getTotalRewards());
     }
 
+    /**
+     * Test no transactions found.
+     */
     @Test
     void testNoTransactionsFound() {
 
