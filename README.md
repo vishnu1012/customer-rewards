@@ -281,13 +281,16 @@ spring.jpa.defer-datasource-initialization=true
 
 ---
 
-# Future Improvements
+# Test Cases
 
-- Add unit test cases
-- Add exception handling
-- Add validation
-- Connect with MySQL/PostgreSQL
-- Add APIs to create transactions
+The project includes unit test cases for:
+
+- Reward calculation for amount less than 50
+- Reward calculation for amount between 50 and 100
+- Reward calculation for amount greater than 100
+- Multiple customer reward calculation
+- No transaction scenario
+- Controller API testing
 
 ---
 

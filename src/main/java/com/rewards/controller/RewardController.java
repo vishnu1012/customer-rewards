@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * The type Reward controller.
+ * REST controller for reward related APIs.
  */
 @RestController
 @RequiredArgsConstructor
@@ -24,9 +24,9 @@ public class RewardController {
     private final RewardService rewardService;
 
     /**
-     * Gets rewards.
+     * Returns reward points of all customers.
      *
-     * @return the rewards
+     * @return list of rewards
      */
     @GetMapping
     @Operation(summary = "Get rewards for all customers")

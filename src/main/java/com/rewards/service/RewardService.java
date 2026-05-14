@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 import com.rewards.exception.ResourceNotFoundException;
 
 /**
- * The type Reward service.
+ * Service class responsible for calculating
+ * customer reward points.
  */
 @Service
 @RequiredArgsConstructor
@@ -21,9 +22,10 @@ public class RewardService {
     private final TransactionRepository transactionRepository;
 
     /**
-     * Calculate rewards list.
+     * Calculates monthly and total reward points
+     * for all customers.
      *
-     * @return the list
+     * @return list of customer reward responses
      */
     public List<RewardResponse> calculateRewards() {
 
@@ -80,6 +82,16 @@ public class RewardService {
                 .build();
     }
 
+    /**
+     * Calculates reward points based on transaction amount.
+     *
+     * Reward Rules:
+     * - 2 points for every dollar spent above 100
+     * - 1 point for every dollar spent between 50 and 100
+     *
+     * @param amount transaction amount
+     * @return reward points
+     */
     private int calculatePoints(double amount) {
 
         int points = 0;

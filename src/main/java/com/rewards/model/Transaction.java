@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 /**
- * The type Transaction.
+ * Entity representing customer transaction.
  */
 @Entity
 @Data

@@ -91,4 +91,110 @@ class RewardServiceTest {
                 () -> rewardService.calculateRewards()
         );
     }
+
+    @Test
+    void testRewardCalculationForAmountLessThan50() {
+
+        List<Transaction> transactions = List.of(
+                new Transaction(
+                        1L,
+                        101L,
+                        "John",
+                        40,
+                        LocalDate.of(2026, 1, 10)
+                )
+        );
+
+        when(transactionRepository.findAll())
+                .thenReturn(transactions);
+
+        List<RewardResponse> responses =
+                rewardService.calculateRewards();
+
+        assertEquals(
+                0,
+                responses.get(0).getTotalRewards()
+        );
+    }
+
+    @Test
+    void testRewardCalculationForAmountBetween50And100() {
+
+        List<Transaction> transactions = List.of(
+                new Transaction(
+                        1L,
+                        101L,
+                        "John",
+                        75,
+                        LocalDate.of(2026, 1, 10)
+                )
+        );
+
+        when(transactionRepository.findAll())
+                .thenReturn(transactions);
+
+        List<RewardResponse> responses =
+                rewardService.calculateRewards();
+
+        assertEquals(
+                25,
+                responses.get(0).getTotalRewards()
+        );
+    }
+
+    @Test
+    void testRewardCalculationForAmountGreaterThan100() {
+
+        List<Transaction> transactions = List.of(
+                new Transaction(
+                        1L,
+                        101L,
+                        "John",
+                        120,
+                        LocalDate.of(2026, 1, 10)
+                )
+        );
+
+        when(transactionRepository.findAll())
+                .thenReturn(transactions);
+
+        List<RewardResponse> responses =
+                rewardService.calculateRewards();
+
+        assertEquals(
+                90,
+                responses.get(0).getTotalRewards()
+        );
+    }
+
+    @Test
+    void testMultipleCustomersRewards() {
+
+        List<Transaction> transactions = List.of(
+
+                new Transaction(
+                        1L,
+                        101L,
+                        "John",
+                        120,
+                        LocalDate.of(2026, 1, 10)
+                ),
+
+                new Transaction(
+                        2L,
+                        102L,
+                        "Alice",
+                        150,
+                        LocalDate.of(2026, 1, 15)
+                )
+        );
+
+        when(transactionRepository.findAll())
+                .thenReturn(transactions);
+
+        List<RewardResponse> responses =
+                rewardService.calculateRewards();
+
+        assertEquals(2, responses.size());
+    }
 }
